@@ -1,0 +1,33 @@
+---
+title: "RMarkdown Outline"
+author: "Dave Bosworth"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Introduction  
+What is RMarkdown  
+Why should I use it over a script  
+How is it different than a script  
+Activity 1: make sure everyone can open test file, load data, and run code  
+Basic syntax and structure  
+Activity 2: create new document, practice using some syntax options, knit file to html  
+Code chunks and inline code  
+Activity 3: inline code  
+Code chunk options  
+Activity 4: practice modifying code chunk options  
+Basic Pandoc-header options  
+Activity 5: practice modifying yaml options  
+Adding and formatting tables  
+Activity 6: Tables  
+Adding interactive elements: plotly, leaflet, datatable (DT)  
+Activity 7: Interactive elements  
+Adding tabs  
+Activity 8: Tabs  
+Open Questions  
+
+
