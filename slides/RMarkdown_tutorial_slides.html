@@ -9,6 +9,8 @@
     <link href="libs/remark-css/default.css" rel="stylesheet" />
     <link href="libs/remark-css/metropolis.css" rel="stylesheet" />
     <link href="libs/remark-css/metropolis-fonts.css" rel="stylesheet" />
+    <script src="libs/kePrint/kePrint.js"></script>
+    <link href="libs/lightable/lightable.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/custom.css" type="text/css" />
   </head>
   <body>
@@ -93,6 +95,10 @@ Adding tabs
 
 Open Questions  
 
+--
+
+GitHub Introduction
+
 ---
 
 # What is R Markdown?
@@ -115,8 +121,9 @@ Open Questions
 
 --
 
+
 - Allows for many output options including: 
-  - html, pdf, and Microsoft Word 
+  - HTML, PDF, and Microsoft Word 
   - presentation slides
   - books and scientific articles
   - dashboards and shiny applications
@@ -144,6 +151,8 @@ Open Questions
 class: inverse, middle
 
 # Activity 1
+
+### Basic Setup
 
 Open test.Rmd file, load data, and run code
 
@@ -180,7 +189,7 @@ output:
 
 ## Narrative Text
 
-Narration formatted with markdown-
+Narration formatted with markdown -  
 
 - Plain text
 - Headers
@@ -213,6 +222,8 @@ plot(pressure)
 class: inverse, middle
 
 # Activity 2
+
+### Basic Usage
 
 - Create new document
 - Practice using some syntax options
@@ -250,14 +261,14 @@ summary(cars)
 # Today's date is `r Sys.Date()`
 ```
 
-Today's date is 2022-10-11
+Today's date is 2022-10-12
 
 ---
 class: inverse, middle
 
 # Activity 3
 
-Inserting and running code
+### Inserting and running code
 
 ---
 
@@ -265,7 +276,7 @@ Inserting and running code
 
 ### message, error, warning
 
-message = TRUE
+`message = TRUE`
 
 
 ```r
@@ -287,7 +298,7 @@ library(tidyverse)
 
 ***
 
-message = FALSE
+`message = FALSE`
 
 
 ```r
@@ -300,19 +311,26 @@ library(tidyverse)
 
 ### eval, include, echo, results
 
-- eval: if **FALSE**, the code will not run in the code block when "knitted", but the code appears in the output file (default is **TRUE**)
+- `eval` - default is `eval = TRUE`
+  - if `eval = FALSE`, the code will not run in the code block when "knitted", but the code appears in the output file
+  
+--
+
+
+- `include` - default is `include = TRUE`
+  - if `include = FALSE`, the code and results won't appear in output file, but the code is still executed and results can be used by other code chunks
 
 --
 
-- include: if **FALSE**, the code and results won't appear in output file, but the code is still executed and results can be used by other code chunks (default is **TRUE**)
+
+- `echo` - default is `echo = TRUE`
+  - if `echo = FALSE`, the code won't appear in the output file, but the results are still displayed
 
 --
 
-- echo: if **FALSE**, the code won't appear in the output file, but the results are still displayed (default is **TRUE**)
 
---
-
-- results: if **"hide"**, the results won't appear in the output file, but the code appears in the output (default is **"markup"**)
+- `results` - default is `results = "markup"`
+  - if `results = "hide"`, the results won't appear in the output file, but the code appears in the output
 
 ---
 
@@ -320,31 +338,265 @@ library(tidyverse)
 
 ### Figure output options
 
-- fig.height, fig.width: the height and width in inches for figures created by the code chunk
+- `fig.height`, `fig.width` - the height and width in inches for figures created by the code chunk
 
 --
 
-- fig.align: allows for custom alignment of figures in the output file. Can be "left", "right", or "center"
+- `fig.align` - allows for custom alignment of figures in the output file. Can be "left", "right", or "center"
+
+--
+
+- `fig.cap` - figure caption
+
+- `fig.alt` - alt text for a figure
 
 ---
 class: inverse, middle
 
 # Activity 4
 
-Modify code chunk options
+### Modify code chunk options
 
 ---
 
 # Basic Pandoc-header options
+
+- Standard options: title, author, date
+
+--
+
+
+- HTML output options: 
+  - table of contents and options
+  - code folding
+  - code download
+  - themes
 
 ---
 class: inverse, middle
 
 # Activity 5
 
-Modify YAML options
+### Modify YAML options
 
 ---
+
+# Adding and formatting tables
+
+### Basic printing
+
+
+```r
+df &lt;- head(mtcars)
+df
+```
+
+```
+##                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
+## Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
+## Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
+## Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
+## Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
+## Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
+## Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1
+```
+
+---
+
+# Adding and formatting tables
+
+### Kable
+
+
+```r
+library(knitr)
+kable(df)
+```
+
+
+
+|                  |  mpg| cyl| disp|  hp| drat|    wt|  qsec| vs| am| gear| carb|
+|:-----------------|----:|---:|----:|---:|----:|-----:|-----:|--:|--:|----:|----:|
+|Mazda RX4         | 21.0|   6|  160| 110| 3.90| 2.620| 16.46|  0|  1|    4|    4|
+|Mazda RX4 Wag     | 21.0|   6|  160| 110| 3.90| 2.875| 17.02|  0|  1|    4|    4|
+|Datsun 710        | 22.8|   4|  108|  93| 3.85| 2.320| 18.61|  1|  1|    4|    1|
+|Hornet 4 Drive    | 21.4|   6|  258| 110| 3.08| 3.215| 19.44|  1|  0|    3|    1|
+|Hornet Sportabout | 18.7|   8|  360| 175| 3.15| 3.440| 17.02|  0|  0|    3|    2|
+|Valiant           | 18.1|   6|  225| 105| 2.76| 3.460| 20.22|  1|  0|    3|    1|
+
+---
+
+# Adding and formatting tables
+
+### Kable styling
+
+
+```r
+library(kableExtra)
+kable(df, format = "html") %&gt;% kable_styling(font_size = 10)
+```
+
+&lt;table class="table" style="font-size: 10px; margin-left: auto; margin-right: auto;"&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt;   &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; mpg &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; cyl &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; disp &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; hp &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; drat &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; wt &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; qsec &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; vs &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; am &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; gear &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; carb &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Mazda RX4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 21.0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 160 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 110 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3.90 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2.620 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 16.46 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Mazda RX4 Wag &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 21.0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 160 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 110 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3.90 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2.875 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 17.02 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Datsun 710 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 22.8 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 108 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 93 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3.85 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2.320 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 18.61 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Hornet 4 Drive &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 21.4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 258 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 110 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3.08 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3.215 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 19.44 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Hornet Sportabout &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 18.7 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 360 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 175 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3.15 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3.440 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 17.02 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Valiant &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 18.1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 225 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 105 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2.76 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3.460 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 20.22 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+---
+class: inverse, middle
+
+# Activity 6
+
+### Tables
+
+---
+
+# Adding interactive elements
+
+- datatable (DT)
+
+- plotly
+
+- leaflet
+
+---
+class: inverse, middle
+
+# Activity 7
+
+### Interactive elements
+
+---
+
+# Adding tabs
+
+- Basic setup
+
+- Style options
+
+---
+class: inverse, middle
+
+# Activity 8
+
+### Tabs
+
+---
+
+# Open Questions???
+
+---
+
+# GitHub Introduction
+
+- Participants poll
+
+--
+
+- Homework!
+
+--
+
+- Tutorial will be held through Teams on **November 18, 2022 from 1:30-3:00**
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

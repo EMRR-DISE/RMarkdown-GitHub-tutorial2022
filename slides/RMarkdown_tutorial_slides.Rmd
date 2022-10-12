@@ -79,6 +79,10 @@ Adding tabs
 
 Open Questions  
 
+--
+
+GitHub Introduction
+
 ---
 
 # What is R Markdown?
@@ -101,8 +105,9 @@ Open Questions
 
 --
 
+
 - Allows for many output options including: 
-  - html, pdf, and Microsoft Word 
+  - HTML, PDF, and Microsoft Word 
   - presentation slides
   - books and scientific articles
   - dashboards and shiny applications
@@ -130,6 +135,8 @@ Open Questions
 class: inverse, middle
 
 # Activity 1
+
+### Basic Setup
 
 Open test.Rmd file, load data, and run code
 
@@ -165,7 +172,7 @@ output:
 
 ## Narrative Text
 
-Narration formatted with markdown-
+Narration formatted with markdown -  
 
 - Plain text
 - Headers
@@ -195,6 +202,8 @@ plot(pressure)
 class: inverse, middle
 
 # Activity 2
+
+### Basic Usage
 
 - Create new document
 - Practice using some syntax options
@@ -227,7 +236,7 @@ class: inverse, middle
 
 # Activity 3
 
-Inserting and running code
+### Inserting and running code
 
 ---
 
@@ -235,7 +244,7 @@ Inserting and running code
 
 ### message, error, warning
 
-message = TRUE
+`message = TRUE`
 
 ```{r true message output example, message = TRUE}
 library(tidyverse)
@@ -245,7 +254,7 @@ library(tidyverse)
 
 ***
 
-message = FALSE
+`message = FALSE`
 
 ```{r false message output example}
 library(tidyverse)
@@ -257,19 +266,26 @@ library(tidyverse)
 
 ### eval, include, echo, results
 
-- eval: if **FALSE**, the code will not run in the code block when "knitted", but the code appears in the output file (default is **TRUE**)
+- `eval` - default is `eval = TRUE`
+  - if `eval = FALSE`, the code will not run in the code block when "knitted", but the code appears in the output file
+  
+--
+
+
+- `include` - default is `include = TRUE`
+  - if `include = FALSE`, the code and results won't appear in output file, but the code is still executed and results can be used by other code chunks
 
 --
 
-- include: if **FALSE**, the code and results won't appear in output file, but the code is still executed and results can be used by other code chunks (default is **TRUE**)
+
+- `echo` - default is `echo = TRUE`
+  - if `echo = FALSE`, the code won't appear in the output file, but the results are still displayed
 
 --
 
-- echo: if **FALSE**, the code won't appear in the output file, but the results are still displayed (default is **TRUE**)
 
---
-
-- results: if **"hide"**, the results won't appear in the output file, but the code appears in the output (default is **"markup"**)
+- `results` - default is `results = "markup"`
+  - if `results = "hide"`, the results won't appear in the output file, but the code appears in the output
 
 ---
 
@@ -277,28 +293,133 @@ library(tidyverse)
 
 ### Figure output options
 
-- fig.height, fig.width: the height and width in inches for figures created by the code chunk
+- `fig.height`, `fig.width` - the height and width in inches for figures created by the code chunk
 
 --
 
-- fig.align: allows for custom alignment of figures in the output file. Can be "left", "right", or "center"
+- `fig.align` - allows for custom alignment of figures in the output file. Can be "left", "right", or "center"
+
+--
+
+- `fig.cap` - figure caption
+
+- `fig.alt` - alt text for a figure
 
 ---
 class: inverse, middle
 
 # Activity 4
 
-Modify code chunk options
+### Modify code chunk options
 
 ---
 
 # Basic Pandoc-header options
+
+- Standard options: title, author, date
+
+--
+
+
+- HTML output options: 
+  - table of contents and options
+  - code folding
+  - code download
+  - themes
 
 ---
 class: inverse, middle
 
 # Activity 5
 
-Modify YAML options
+### Modify YAML options
 
 ---
+
+# Adding and formatting tables
+
+### Basic printing
+
+```{r basic table printing}
+df <- head(mtcars)
+df
+```
+
+---
+
+# Adding and formatting tables
+
+### Kable
+
+```{r table with kable}
+library(knitr)
+kable(df)
+```
+
+---
+
+# Adding and formatting tables
+
+### Kable styling
+
+```{r kable with styling}
+library(kableExtra)
+kable(df, format = "html") %>% kable_styling(font_size = 10)
+```
+
+---
+class: inverse, middle
+
+# Activity 6
+
+### Tables
+
+---
+
+# Adding interactive elements
+
+- datatable (DT)
+
+- plotly
+
+- leaflet
+
+---
+class: inverse, middle
+
+# Activity 7
+
+### Interactive elements
+
+---
+
+# Adding tabs
+
+- Basic setup
+
+- Style options
+
+---
+class: inverse, middle
+
+# Activity 8
+
+### Tabs
+
+---
+
+# Open Questions???
+
+---
+
+# GitHub Introduction
+
+- Participants poll
+
+--
+
+- Homework!
+
+--
+
+- Tutorial will be held through Teams on **November 18, 2022 from 1:30-3:00**
