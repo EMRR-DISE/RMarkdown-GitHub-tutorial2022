@@ -1,0 +1,35 @@
+---
+title: "Testing R Markdown"
+author: "Dave Bosworth"
+date: '`r format(Sys.Date(), "%B %d, %Y")`'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Global code and functions
+
+```{r load packages}
+# Load packages
+library(tidyverse)
+library(here)
+```
+
+# Import Data
+
+```{r import data}
+df_monthly <- read_csv(here("Monthly_Catch_CPUE.csv"))
+
+glimpse(df_monthly)
+```
+
+# Create CPUE by Gear Type Plot
+
+```{r cpue plot}
+df_monthly %>%  ggplot(aes(x = Date, y = CPUE)) +
+  geom_point() +
+  facet_wrap(vars(Gear), ncol=1, scales = "free_y")
+```
+
