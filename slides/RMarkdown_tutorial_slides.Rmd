@@ -1,0 +1,304 @@
+---
+title: "Getting Started with R Markdown"
+subtitle: "Beginner to intermediate level tutorial for R Markdown"
+author: "Dave Bosworth<br>EMRR Branch<br>Collaborative Science and Innovation Section"
+date: "October 17, 2022"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: [default, metropolis, metropolis-fonts, "css/custom.css"]
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+---
+
+```{r setup, include = FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(warning = FALSE, message = FALSE)
+```
+
+# Introduction
+
+- A little about me
+
+--
+
+- About you
+
+---
+
+# Tutorial Outline
+
+--
+
+R Markdown basics: What is it, and why should I use it?  
+**Activity 1:** Open test file, load data, and run code  
+
+--
+
+Basic syntax and structure  
+**Activity 2:** Create new document, practice using some syntax options, knit file to html 
+
+--
+
+Code chunks and inline code  
+**Activity 3:** Inserting and running code  
+
+--
+
+Code chunk options  
+**Activity 4:** Modify code chunk options  
+
+--
+
+Basic Pandoc-header options  
+**Activity 5:** Modify YAML options  
+
+---
+
+# Tutorial Outline - continued
+
+--
+
+Adding and formatting tables  
+**Activity 6:** Tables  
+
+--
+
+Adding interactive elements: plotly, leaflet, datatable (DT)  
+**Activity 7:** Interactive elements  
+
+--
+
+Adding tabs  
+**Activity 8:** Tabs  
+
+--
+
+Open Questions  
+
+---
+
+# What is R Markdown?
+
+- R-specific file type (.Rmd) that provides a platform for science communication
+
+--
+
+- Used to save and execute code just like an R script, but in a notebook format
+
+--
+
+- Allows for code and text narrative in the same document
+
+---
+
+# How is R Markdown different than an R script?
+
+- Results from code and narrative text can be stitched ("knitted") together in the output
+
+--
+
+- Allows for many output options including: 
+  - html, pdf, and Microsoft Word 
+  - presentation slides
+  - books and scientific articles
+  - dashboards and shiny applications
+  - websites
+
+---
+
+# Why use R Markdown?
+
+- Organize your code into "chunks" that can be run individually (notebook format)
+
+--
+
+- Save code and narrative text together in one document
+
+--
+
+- Share code and results with others - reproducible, transparent, clearly communicated
+
+--
+
+- Can be used to create automated reports
+
+---
+class: inverse, middle
+
+# Activity 1
+
+Open test.Rmd file, load data, and run code
+
+---
+
+# R Markdown Document Structure
+
+## Metadata (YAML header)
+
+Optional section for rendering options (pandoc) as key: value pairs
+
+```{r example yaml header, eval = FALSE}
+---
+title: "Getting Started with R Markdown"
+subtitle: "Beginner to intermediate level tutorial for R Markdown"
+author: "Dave Bosworth<br>EMRR Branch<br>Collaborative Science and Innovation Section"
+date: "October 17, 2022"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: [default, metropolis, metropolis-fonts, "css/custom.css"]
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+---
+```
+
+---
+
+# R Markdown Document Structure
+
+## Narrative Text
+
+Narration formatted with markdown-
+
+- Plain text
+- Headers
+- Text formatting (bold, italic)
+- Links
+- Images
+- Numbered and unordered lists
+- Code
+- Equations
+
+[R Markdown Reference Guide](https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf)
+
+---
+
+# R Markdown Document Structure
+
+## Code chunks
+
+- Sections of embedded R code within the document
+- Code is run when R Markdown file is "knitted" with results displayed in the output document 
+
+```{r code chunk example, fig.height = 5}
+plot(pressure)
+```
+
+---
+class: inverse, middle
+
+# Activity 2
+
+- Create new document
+- Practice using some syntax options
+- "Knit" file to html
+
+---
+
+# Code within R Markdown
+
+### Code chunks
+
+```{r code chunk example 2}
+summary(cars)
+```
+
+--
+
+***
+
+### Inline code
+
+```{r inline code example}
+# Today's date is `r Sys.Date()`
+```
+
+Today's date is `r Sys.Date()`
+
+---
+class: inverse, middle
+
+# Activity 3
+
+Inserting and running code
+
+---
+
+# Code Chunk Options
+
+### message, error, warning
+
+message = TRUE
+
+```{r true message output example, message = TRUE}
+library(tidyverse)
+```
+
+--
+
+***
+
+message = FALSE
+
+```{r false message output example}
+library(tidyverse)
+```
+
+---
+
+# Code Chunk Options
+
+### eval, include, echo, results
+
+- eval: if **FALSE**, the code will not run in the code block when "knitted", but the code appears in the output file (default is **TRUE**)
+
+--
+
+- include: if **FALSE**, the code and results won't appear in output file, but the code is still executed and results can be used by other code chunks (default is **TRUE**)
+
+--
+
+- echo: if **FALSE**, the code won't appear in the output file, but the results are still displayed (default is **TRUE**)
+
+--
+
+- results: if **"hide"**, the results won't appear in the output file, but the code appears in the output (default is **"markup"**)
+
+---
+
+# Code Chunk Options
+
+### Figure output options
+
+- fig.height, fig.width: the height and width in inches for figures created by the code chunk
+
+--
+
+- fig.align: allows for custom alignment of figures in the output file. Can be "left", "right", or "center"
+
+---
+class: inverse, middle
+
+# Activity 4
+
+Modify code chunk options
+
+---
+
+# Basic Pandoc-header options
+
+---
+class: inverse, middle
+
+# Activity 5
+
+Modify YAML options
+
+---
