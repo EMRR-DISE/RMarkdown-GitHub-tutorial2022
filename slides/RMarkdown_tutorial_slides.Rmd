@@ -60,8 +60,6 @@ Basic Pandoc-header options
 
 # Tutorial Outline - continued
 
---
-
 Adding and formatting tables  
 **Activity 6:** Tables  
 
@@ -150,19 +148,10 @@ Optional section for rendering options (pandoc) as key: value pairs
 
 ```{r example yaml header, eval = FALSE}
 ---
-title: "Getting Started with R Markdown"
-subtitle: "Beginner to intermediate level tutorial for R Markdown"
-author: "Dave Bosworth<br>EMRR Branch<br>Collaborative Science and Innovation Section"
-date: "October 17, 2022"
-output:
-  xaringan::moon_reader:
-    lib_dir: libs
-    css: [default, metropolis, metropolis-fonts, "css/custom.css"]
-    nature:
-      highlightStyle: github
-      highlightLines: true
-      countIncrementalSlides: false
-      ratio: "16:9"
+title: "Testing R Markdown"
+author: "Dave Bosworth"
+date: '`r format(Sys.Date(), "%B %d, %Y")`'
+output: html_document
 ---
 ```
 
@@ -264,7 +253,7 @@ library(tidyverse)
 
 # Code Chunk Options
 
-### eval, include, echo, results
+### eval, include, echo
 
 - `eval` - default is `eval = TRUE`
   - if `eval = FALSE`, the code will not run in the code block when "knitted", but the code appears in the output file
@@ -280,12 +269,6 @@ library(tidyverse)
 
 - `echo` - default is `echo = TRUE`
   - if `echo = FALSE`, the code won't appear in the output file, but the results are still displayed
-
---
-
-
-- `results` - default is `results = "markup"`
-  - if `results = "hide"`, the results won't appear in the output file, but the code appears in the output
 
 ---
 
@@ -316,16 +299,125 @@ class: inverse, middle
 
 # Basic Pandoc-header options
 
-- Standard options: title, author, date
+Standard options: title, author, date, output type
+
+```{r example yaml header 2, eval = FALSE}
+---
+title: "Testing R Markdown"
+author: "Dave Bosworth"
+date: "October 17, 2022"
+output: html_document
+---
+```
 
 --
 
+Make the date dynamic by using R code in the YAML header:
 
-- HTML output options: 
-  - table of contents and options
-  - code folding
-  - code download
-  - themes
+```{r example yaml header dyn date, eval = FALSE}
+---
+title: "Testing R Markdown"
+author: "Dave Bosworth"
+date: "`r Sys.Date()`"
+output: html_document
+---
+```
+
+---
+
+# Basic Pandoc-header options
+
+## HTML Output Options - Table of Contents
+
+.pull-left[
+#### Header
+
+***
+
+```{r yaml add toc, eval = FALSE}
+---
+output: 
+  html_document: 
+    toc: true
+    toc_float:
+      collapsed: false
+---
+```
+]
+
+.pull-right[
+#### Output
+
+***
+
+```{r print yaml toc image, echo = FALSE, out.width = '80%'}
+knitr::include_graphics("images/YAML_TOC.png")
+```
+]
+
+---
+
+# Basic Pandoc-header options
+
+## HTML Output Options - Code Folding and Download
+
+.pull-left[
+#### Header
+
+***
+
+```{r yaml code fold and download, eval = FALSE}
+---
+output: 
+  html_document: 
+    code_folding: show
+    code_download: true
+---
+```
+]
+
+.pull-right[
+#### Output
+
+***
+
+```{r print yaml code fold and download image, echo = FALSE, out.width = '40%'}
+knitr::include_graphics("images/YAML_code_folding_download.png")
+```
+]
+
+---
+
+# Basic Pandoc-header options
+
+## HTML Output Options - Bootswatch Themes
+
+.pull-left[
+#### Header
+
+***
+
+```{r yaml themes, eval = FALSE}
+---
+output: 
+  html_document: 
+    theme:
+      bootswatch: solar
+---
+```
+]
+
+.pull-right[
+#### Output
+
+***
+
+```{r print yaml themes image, echo = FALSE, out.width = '90%'}
+knitr::include_graphics("images/YAML_solar_theme.png")
+```
+]
+
+Use `bslib::bootswatch_themes()` to list available themes
 
 ---
 class: inverse, middle
@@ -378,11 +470,63 @@ class: inverse, middle
 
 # Adding interactive elements
 
-- datatable (DT)
+## datatable (DT)
 
-- plotly
+```{r create datatable}
+library(DT)
+datatable(mtcars, options = list(pageLength = 5))
+```
 
-- leaflet
+---
+
+# Adding interactive elements
+
+## plotly
+
+.pull-left[
+```{r using plotly, results = 'hide'}
+library(plotly)
+plt <- 
+  ggplot(
+    data = mtcars, 
+    aes(x = wt, y= mpg, color = cyl)
+  ) +
+  geom_point()
+
+ggplotly(plt, width = 500, height = 400)
+```
+]
+
+.pull-right[
+```{r ref.label = 'using plotly', echo = FALSE}
+
+```
+]
+
+---
+
+# Adding interactive elements
+
+## leaflet
+
+.pull-left[
+```{r using leaflet, results = 'hide'}
+library(leaflet)
+leaflet(width = 400, height = 400) %>%
+  addTiles() %>%
+  addMarkers(
+    lng = 174.768, 
+    lat = -36.852, 
+    popup = "The birthplace of R"
+  )
+```
+]
+
+.pull-right[
+```{r ref.label = 'using leaflet', echo = FALSE}
+
+```
+]
 
 ---
 class: inverse, middle
@@ -395,9 +539,9 @@ class: inverse, middle
 
 # Adding tabs
 
-- Basic setup
-
-- Style options
+```{r print tabset image, echo = FALSE, out.width = '70%'}
+knitr::include_graphics("images/Tabset_example.png")
+```
 
 ---
 class: inverse, middle
