@@ -1,0 +1,82 @@
+---
+title: "Markdown examples"
+author: "Dave Bosworth"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+This is plain text.
+
+Here is a new paragraph. End it with two spaces to start a new paragraph.  
+Here is another paragraph using a backlash\
+to make a new line.
+
+# Header Level 1
+
+## Header Level 2
+
+### Header Level 3
+
+#### Header Level 4
+
+Here is **bold** text
+
+Now here is *italics*
+
+Links:\
+[Link to R Markdown website](https://rmarkdown.rstudio.com/index.html)
+
+<https://rmarkdown.rstudio.com/index.html>
+
+[Link to End of Document](#end)
+
+Images:
+
+![Caption](DWR_Logo.png)
+
+Lists:
+
+* unordered list
+* item 2
+  - sub-item 1 (indent 1 tab)
+  - sub-item 2
+    + sub-item 2a (indent another tab)
+* item 3
+
+1. ordered list
+2. item 2
+    i. item 2a (indent 2 tabs)
+    ii. item 2b
+        a. item 2ba (indent 2 additional tabs)
+3. item 3
+
+use backticks to format `verbatim code`
+
+Equation: $CPUE = catch/effort$
+
+Equation block:
+$$CPUE = catch/effort$$
+
+Horizontal rule:
+
+---
+
+superscript^2^
+
+subscript~2~
+
+~~strikethrough~~
+
+endash: --
+
+emdash: ---
+
+escaped: \* \_ \\
+
+> block quote
+
+# End of Document {#end}
