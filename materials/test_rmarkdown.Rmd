@@ -30,6 +30,6 @@ glimpse(df_monthly)
 ```{r cpue plot}
 df_monthly %>%  ggplot(aes(x = Date, y = CPUE)) +
   geom_point() +
-  facet_wrap(vars(Gear), ncol=1, scales = "free_y")
+  facet_wrap(vars(Gear), ncol = 1, scales = "free_y")
 ```
 
