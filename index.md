@@ -4,12 +4,12 @@ layout: default
 
 # R Markdown
 
-## Tutorial Materials
+### Tutorial Materials
 
 * [Tutorial slides](slides/RMarkdown_tutorial_slides.html)
 * [Tutorial activities examples](materials/rmarkdown_activities_examples.html)
 
-## Links and Resources
+### Links and Resources
 
 * [R Markdown Cheatsheet](https://github.com/rstudio/cheatsheets/raw/main/rmarkdown-2.0.pdf)
 * [R Markdown Reference Guide](https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf)
