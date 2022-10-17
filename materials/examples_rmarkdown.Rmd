@@ -54,7 +54,7 @@ plt_cpue_month
 
 # Code Chunk Options
 
-## message, error, warning
+## message, warning
 
 Notice when we imported the fish count data above, there is a message printed in the output. If we don't want this message to display, we can set `message = FALSE` for the code chunk.
 
@@ -62,25 +62,14 @@ Notice when we imported the fish count data above, there is a message printed in
 df_monthly <- read_csv(here("materials/Monthly_Catch_CPUE.csv"))
 ```
 
-Now the message doesn't display, but the code was still executed. Same applies to errors and warnings.
+Now the message doesn't display, but the code was still executed. Same applies to warnings.
 
-## eval, include, echo
+## eval
 
-If you want the code to appear in the output file, but for the **code to NOT run** when the Rmd file is knitted, set `eval = FALSE` as a code chunk option. For example, you may want to show the code you used to export the fish plot above as a jpg file, but to not have it exported every time you knit the file.
+If you want the code to appear in the output file, but for the **code to NOT run** when the Rmd file is knitted, set `eval = FALSE` as a code chunk option. For example, you may want to show the code you used to summarize the count and CPUE data as annual totals in a new data frame `df_annual` and plot the CPUE results saving it as `plt_cpue_yr`, but not actually run the code when you knit the file.
 
-```{r export cpue plot, eval = FALSE}
-ggsave(
-  "CPUE_plot_month.jpg",
-  plt_cpue_month,
-  height = 5,
-  width = 7,
-  units = "in"
-)
-```
-
-If you want the code to be executed when the Rmd file is knitted, but for the **code and results to NOT appear** in the output file, set `include = FALSE` as a code chunk option. For example, maybe you want to summarize the count and CPUE data as annual totals in a new data frame `df_annual` and plot the CPUE results, but not show the code you used or the plot in the document.
-
-```{r summarize and plot annual count and cpue, include = FALSE}
+```{r eval false example, eval = FALSE}
+# Summarize count and CPUE as annual totals
 df_annual <- df_monthly %>% 
   group_by(year, Gear) %>% 
   summarize(across(c(mo.count, CPUE), sum), .groups = "drop") %>%
@@ -89,27 +78,70 @@ df_annual <- df_monthly %>%
     Count = mo.count
   )
 
-df_annual %>% 
+# Plot annual CPUE
+plt_cpue_yr <- df_annual %>% 
   ggplot(aes(x = Year, y = CPUE)) +
   geom_col() +
   facet_wrap(vars(Gear), ncol = 1, scales = "free_y") + 
   theme_bw()
+
+plt_cpue_yr
 ```
 
-Even though the code and results aren't displayed in the document, the `df_annual` data frame is available to be used within the Rmd file.
+Now if you were to try to print `df_annual` and `plt_cpue_yr`, you'll get an error since the code wasn't executed when the document was knitted.
 
-```{r glimpse annual data}
+```{r error df_annual and plt_cpue_yr, error = TRUE}
+# Show glimpse of df_annual
 glimpse(df_annual)
+
+# Print plot of annual CPUE
+plt_cpue_yr
 ```
 
-If you want the code to executed and results to be displayed in the output file when the Rmd is knitted, but for the **code to NOT appear** in the output file, set `echo = FALSE` as a code chunk option. For example, maybe you want the plot of annual CPUE to display, but not show the code used to create it.
+## include
 
-```{r plot annual cpue, echo = FALSE}
-df_annual %>% 
+If you want the code to be executed when the Rmd file is knitted, but for the **code and results to NOT appear** in the output file, set `include = FALSE` as a code chunk option. For example, let's summarize and plot the CPUE data using the same code shown above, but this time we'll use `include = FALSE` so the code and results won't appear in the output document.
+
+```{r include false example, include = FALSE}
+# Summarize count and CPUE as annual totals
+df_annual <- df_monthly %>% 
+  group_by(year, Gear) %>% 
+  summarize(across(c(mo.count, CPUE), sum), .groups = "drop") %>%
+  rename(
+    Year = year,
+    Count = mo.count
+  )
+
+# Plot annual CPUE
+plt_cpue_yr <- df_annual %>% 
   ggplot(aes(x = Year, y = CPUE)) +
   geom_col() +
   facet_wrap(vars(Gear), ncol = 1, scales = "free_y") + 
   theme_bw()
+
+plt_cpue_yr
+```
+
+Even though the code and results aren't displayed in the document, the `df_annual` data frame and `plt_cpue_yr` plot object are available to be used within the Rmd file.
+
+```{r show df_annual and plt_cpue_yr}
+# Show glimpse of df_annual
+glimpse(df_annual)
+
+# Print plot of annual CPUE
+plt_cpue_yr
+```
+
+## echo
+
+If you want the code to be executed and results to be displayed in the output file when the Rmd is knitted, but for the **code to NOT appear** in the output file, set `echo = FALSE` as a code chunk option. For example, maybe you want `glimpse(df_annual)` and the plot of annual CPUE to display, but not show the code used to execute this.
+
+```{r echo false example, echo = FALSE}
+# Show glimpse of df_annual
+glimpse(df_annual)
+
+# Print plot of annual CPUE
+plt_cpue_yr
 ```
 
 ## Figure output options
@@ -117,12 +149,6 @@ df_annual %>%
 The default figure dimensions in a rendered R Markdown document is 7 inches wide and 5 inches tall. Sometimes you'll want to change these, which can be done using the `fig.height` and `fig.width` code chunk options. Let's change the dimensions of the annual CPUE figure to 6 by 6.
 
 ```{r plot annual cpue change dims, fig.height = 6, fig.width = 6}
-plt_cpue_yr <- df_annual %>% 
-  ggplot(aes(x = Year, y = CPUE)) +
-  geom_col() +
-  facet_wrap(vars(Gear), ncol = 1, scales = "free_y") + 
-  theme_bw()
-
 plt_cpue_yr
 ```
 
@@ -150,19 +176,19 @@ plt_cpue_yr
 
 # Tables
 
+This is what it looks like when you print a data frame itself.
+
+```{r annual data as tibble}
+df_annual
+```
+
 `knitr::kable()` offers a simple format for displaying tables in a rendered R Markdown document. For example, here is the table of annual count and CPUE data printed as a kable.
 
 ```{r annual data as kable}
 kable(df_annual, caption = "Annual Counts and CPUE of YBFMP survey data")
 ```
 
-This is pretty nice compared to just printing the data frame itself.
-
-```{r annual data as tibble}
-df_annual
-```
-
-However, the kable formatting can be improved. The `knitr::kable()` function allows for some minor formatting such as rounding digits and column alignment.
+This is pretty nice compared to just printing the data frame itself. However, the kable formatting can be improved. The `knitr::kable()` function allows for some minor formatting such as rounding digits and column alignment.
 
 ```{r annual data as kable with format}
 kable(
@@ -203,7 +229,7 @@ df_annual %>%
   # Make the Year column bold
   column_spec(1, bold = TRUE) %>%
   # add a scroll box for easier viewing
-  scroll_box(width = "35%", height = "600px")
+  scroll_box(width = "40%", height = "550px")
 ```
 <br>
 
@@ -303,7 +329,7 @@ sf_stations %>%
 
 # Adding Tabs
 
-A feature that I've found to be useful is using tabs in a rendered R Markdown document. Here is how you would set that up to display the two CPUE plots and the stations map in tabs for easier navigation.
+A feature that I've found to be useful is using tabs in a rendered R Markdown document. Here is how you would set up the document to display the two CPUE plots and the stations map in tabs for easier navigation. Apply the `{.tabset}` class attribute to the `## YBFMP Data Summary` header below like this: `## YBFMP Data Summary {.tabset}`. Then, each of the sub-headers of this header will appear as tabs instead of standalone sections. Use another header of the same level as `## YBFMP Data Summary` (level 2) to stop using tab navigation.
 
 ## YBFMP Data Summary {.tabset}
 
@@ -344,5 +370,5 @@ sf_stations %>%
 
 ## Tab formatting
 
-Add `.tabset-fade` and/or `.tabset-pills` to change the appearance and behavior of the tabs
+Add `.tabset-fade` and/or `.tabset-pills` to the `{.tabset}` class attribute to change the appearance and behavior of the tabs.
 
