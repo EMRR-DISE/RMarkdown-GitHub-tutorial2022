@@ -7,7 +7,7 @@ layout: default
 ### Tutorial Materials
 
 * [Tutorial slides](slides/RMarkdown_tutorial_slides.html)
-* [Tutorial activities examples](materials/rmarkdown_activities_examples.html)
+* [Tutorial activity examples](materials/rmarkdown_activity_examples.html)
 
 ### Links and Resources
 
