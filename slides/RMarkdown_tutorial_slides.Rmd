@@ -25,7 +25,11 @@ knitr::opts_chunk$set(warning = FALSE, message = FALSE)
 
 --
 
+
 - About you
+  - Most of you have used R before
+  - Some of you have used R Markdown before 
+  - All of you want to learn about using R Markdown to help with communicating your scientific work
 
 ---
 
