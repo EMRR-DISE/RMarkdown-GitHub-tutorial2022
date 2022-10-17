@@ -231,7 +231,7 @@ class: inverse, middle
 
 # Code Chunk Options
 
-### message, error, warning
+### message, warning
 
 `message = TRUE`
 
