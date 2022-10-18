@@ -40,7 +40,29 @@ df_monthly <- read_csv(here("materials/Monthly_Catch_CPUE.csv"))
 
 This data contains monthly fish counts and CPUE for three different gear types (`r unique(df_monthly$Gear)`) from `r min(df_monthly$year)` to `r max(df_monthly$year)`.
 
-# CPUE Plots by Gear Type
+***
+
+**A word about working directories and .Rmd files:**  
+The default working directory when an .Rmd file is knitted is the .Rmd document directory. This can get confusing when you are using an R project, in which the default working directory is the root directory of the R project. So it's possible to have different working directories when you are running code from code blocks in an .Rmd file versus when you knit the .Rmd file. A useful R package to help with working directories and file paths is the [`here` R package](https://here.r-lib.org/). You can see that we're using it in the code chunk above to clearly define the file path for the fish data.  The [`here::here()`](https://here.r-lib.org/reference/here.html) function points to the root directory of an R project regardless of what the current working directory is. For example:
+
+```{r here function example}
+# Current working directory
+getwd()
+
+# Working directory defined by here::here()
+here()
+```
+
+You can continue the file path within the `here::here()` function as a character string, which appends this string to the the root directory of the R project. For example, here is the file path to the fish data imported above:
+
+```{r here function example 2}
+# Define file path to fish data relative to the root directory using here::here()
+here("materials/Monthly_Catch_CPUE.csv")
+```
+
+# Using Code Chunks
+
+Let's practice using code chunks to create and print a plot displaying monthly CPUE by gear type.
 
 ```{r cpue plot}
 plt_cpue_month <- df_monthly %>% 
@@ -53,6 +75,8 @@ plt_cpue_month
 ```
 
 # Code Chunk Options
+
+Now that we've seen how to use code chunks in an .Rmd document, lets take a look at some commonly-used code chunk options that configure if and how the code chunk and its results are displayed.
 
 ## message, warning
 

@@ -225,6 +225,22 @@ summary(cars)
 Today's date is `r Sys.Date()`
 
 ---
+
+# File paths and working directories in R Markdown
+
+This can be a source of confusion, so its worthwhile taking a moment to cover this:
+
+- The default working directory when an .Rmd file is knitted is the .Rmd document directory
+
+- The default working directory of an R project is the root directory of the R project
+
+- So it's possible to have different working directories when you are running code from code blocks in an .Rmd file versus when you knit the .Rmd file
+
+- A useful R package to help with working directories and file paths is the [`here` R package](https://here.r-lib.org/)
+
+- The `here::here()` function points to the root directory of an R project regardless of what the current working directory is
+
+---
 class: inverse, middle
 
 # Activity 3
