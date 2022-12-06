@@ -1,6 +1,8 @@
 # Code to use in activities for the R Markdown tutorial
 
 
+# Activity 3 - Inserting and running code ---------------------------------
+
 # Code block 1: Load packages ---------------------------------------------
 
 # Load packages
@@ -27,6 +29,9 @@ plt_cpue_month <- df_monthly %>%
   theme_bw()
 
 plt_cpue_month
+
+
+# Activity 4 - Modify code chunk options ----------------------------------
 
 # Code block 5: Summarize and plot annual CPUE ----------------------------
 
@@ -59,6 +64,9 @@ plt_cpue_yr
 # Code block 7: Figure output options -------------------------------------
 
 plt_cpue_yr
+
+
+# Activity 5 - Modify YAML options ----------------------------------------
 
 # Code block 8: Modify basic YAML options ---------------------------------
 
@@ -117,6 +125,9 @@ plt_cpue_yr
 
 bslib::bootswatch_themes()
 
+
+# Activity 6 - Tables ------------------------------------------------------
+
 # Code block 13: Print dataframe of annual CPUE ----------------------------
 
 df_annual
@@ -165,6 +176,8 @@ df_annual %>%
   # add a scroll box for easier viewing
   scroll_box(width = "40%", height = "550px")
 
+
+# Activity 7 - Interactive elements -----------------------------------------
 
 # Code block 17: Convert dataframe of annual CPUE to interactive datatable ------
 
@@ -236,6 +249,9 @@ sf_stations %>%
     title = "Gear Type:"
   )
 
+
+# Activity 8 - Tabs ---------------------------------------------------------
+
 # Code block 22: Adding tabs to html document -------------------------------
 
 ## YBFMP Data Summary {.tabset}
@@ -268,4 +284,8 @@ sf_stations %>%
     values = sf_stations$MethodCode,
     title = "Gear Type:"
   )
+
+# Code block 23: Formatting appearance and behavior of tabs -----------------
+
+## YBFMP Data Summary {.tabset .tabset-fade .tabset-pills}
 
