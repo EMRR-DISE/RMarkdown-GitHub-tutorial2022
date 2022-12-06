@@ -2,7 +2,7 @@
 title: "Getting Started with R Markdown"
 subtitle: "Beginner to intermediate level tutorial for R Markdown"
 author: "Dave Bosworth<br>EMRR Branch<br>Collaborative Science and Innovation Section"
-date: "October 17, 2022"
+date: "Part 1: October 17, 2022<br>Part 2: December 6, 2022"
 output:
   xaringan::moon_reader:
     lib_dir: libs
@@ -140,7 +140,15 @@ class: inverse, middle
 
 ### Basic Setup
 
-Open test.Rmd file, load data, and run code
+- Create new R Project for tutorial
+- Add files to new R Project:
+  - markdown_format_examples.Rmd
+  - Monthly_Catch_CPUE.csv
+  - rmarkdown_activities_code.R
+  - test_rmarkdown.Rmd
+  - DWR_Logo.png
+- Open test_rmarkdown.Rmd file
+- Knit test_rmarkdown.Rmd to make sure it renders correctly
 
 ---
 
@@ -198,9 +206,9 @@ class: inverse, middle
 
 ### Basic Usage
 
-- Create new document
-- Practice using some syntax options
-- "Knit" file to html
+- Create new Rmd document
+- Practice using some markdown syntax options - see markdown_format_examples.Rmd file for examples
+- "Knit" Rmd file to html
 
 ---
 
@@ -246,6 +254,12 @@ class: inverse, middle
 # Activity 3
 
 ### Inserting and running code
+
+- Add code chunks to Rmd document:
+  - Load R packages
+  - Import Monthly CPUE data
+  - Plot monthly CPUE data
+- Practice using inline code
 
 ---
 
@@ -297,12 +311,16 @@ library(tidyverse)
 ### Figure output options
 
 - `fig.height`, `fig.width` - the height and width in inches for figures created by the code chunk
+  - Default figure dimensions are `fig.width = 7` and `fig.height = 5`
 
 --
+
 
 - `fig.align` - allows for custom alignment of figures in the output file. Can be "left", "right", or "center"
+  - Default alignment is left
 
 --
+
 
 - `fig.cap` - figure caption
 
@@ -314,6 +332,12 @@ class: inverse, middle
 # Activity 4
 
 ### Modify code chunk options
+
+- message TRUE vs FALSE
+- eval = FALSE
+- include = FALSE
+- echo = FALSE
+- Figure output options
 
 ---
 
@@ -446,6 +470,11 @@ class: inverse, middle
 
 ### Modify YAML options
 
+- Dynamic date
+- Table of contents
+- Code folding and download
+- bootswatch themes
+
 ---
 
 # Adding and formatting tables
@@ -485,6 +514,11 @@ class: inverse, middle
 # Activity 6
 
 ### Tables
+
+- Basic table printing
+- Kables
+- Basic kable options
+- kableExtra
 
 ---
 
@@ -555,6 +589,12 @@ class: inverse, middle
 
 ### Interactive elements
 
+- Datatables 
+- Datatable options
+- Plotly
+- Leaflet maps
+- Leaflet map options
+
 ---
 
 # Adding tabs
@@ -570,6 +610,9 @@ class: inverse, middle
 
 ### Tabs
 
+- Adding tabs
+- Format appearance and behavior of tabs
+
 ---
 
 # Open Questions???
@@ -582,8 +625,4 @@ class: inverse, middle
 
 --
 
-- Homework!
-
---
-
-- Tutorial will be held through Teams on **November 18, 2022 from 1:30-3:00**
+- Tutorial will be held through MS Teams - **Date and Time to be Announced**
