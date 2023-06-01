@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Getting Started with Git and GitHub</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Dave Bosworth EMRR Branch Collaborative Science and Innovation Section  " />
+    <meta name="date" content="2023-06-07" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/remark-css/metropolis.css" rel="stylesheet" />
+    <link href="libs/remark-css/metropolis-fonts.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/custom.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# Getting Started with Git and GitHub
+]
+.subtitle[
+## Beginner level tutorial for Git and GitHub
+]
+.author[
+### Dave Bosworth<br>EMRR Branch<br>Collaborative Science and Innovation Section<br><br>
+]
+.date[
+### June 7, 2023
+]
+
+---
+
+
+
+
+# Goal of Tutorial
+
+&lt;br&gt;
+
+- Provide a basic overview of Git and GitHub
+
+- Information on how to use these tools with work projects
+
+- Focus is from a beginner perspective
+
+- Interactive - please feel free to ask questions or provide feedback during the workshop
+
+---
+
+# Tutorial Outline
+
+--
+
+What is Git and GitHub and why should I use them?
+
+Common Terminology
+
+--
+
+Configuring Git
+
+**Activity 1:**
+
+--
+
+Creating and Cloning Repositories
+
+**Activity 2:**
+
+--
+
+Committing, Pushing, and Pulling
+
+**Activity 3:**
+
+--
+
+Collaborating with Others: Forking vs. Cloning, Adding Collaborators
+
+**Activity 4:**
+
+---
+
+# Tutorial Outline - continued
+
+Collaborating with Others: Avoiding Merge Conflicts
+
+**Activity 5:**
+
+--
+
+General Workflows
+
+--
+
+Open Questions
+
+--
+
+Intermediate-level topics (if time)
+
+---
+
+# Git vs. GitHub
+
+&lt;br&gt;
+
+**Git** is a version control system originally used by software developers to work together on large projects
+
+**GitHub** is a web or cloud-hosting service for Git-based projects
+
+---
+
+# Why should I use it?
+
+&lt;br&gt;
+
+-	Version control and backup
+
+-	**Collaboration**
+
+-	Sharing and developing R packages
+
+---
+class: inverse, middle
+
+# GitHub Tour
+
+---
+
+# Common Terms
+
+--
+
+- Repository: a set of files managed by Git
+
+--
+
+- Commit: a "snapshot" of all of the files in the repository at a particular time
+
+--
+
+- Local repository: A project saved on your computer
+
+--
+
+- Remote repository: Version of the project that is hosted somewhere other than your computer. Most common is GitHub.
+
+--
+
+- Push: Sends changes made on a local repository to the remote repository
+
+--
+
+- Fetch: Retrieves changes from a remote repository, but does **NOT** change the state of the local repository in any way
+
+--
+
+- Pull: Fetches changes from a remote repository and merges them into the local repository
+
+--
+
+- Branch: Parallel tracks that allow multiple users to work on the same project without overwriting work
+
+--
+
+- Organization: shared accounts where businesses and open-source projects can collaborate across many projects at once
+
+---
+
+# Local vs. Remote repositories
+
+&lt;img src="images/Local_vs_Remote_figure.png" width="55%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Configuring Git
+
+&lt;br&gt;
+
+Using Git Bash or command line:&lt;br&gt;
+
+`git config --global user.name 'Your Name'`&lt;br&gt;
+`git config --global user.email 'yourname@domain.com'`&lt;br&gt;
+Check configuration with `git config --global --list`
+
+&lt;br&gt;
+
+Using the [`usethis` package](https://usethis.r-lib.org/) in R:
+
+
+```r
+usethis::use_git_config(user.name = "Your Name", user.email = "yourname@domain.com")
+```
+
+---
+
+# Creating and Cloning Repositories
+
+**Purpose:** Check configuration on our computers, and introduce basic concepts of Git and GitHub
+
+1) Create a new repository on GitHub
+
+2) Clone the new repository to your local computer using RStudio
+  - *File &gt; New Project &gt; Version Control &gt; Git*
+  - Copy the URL of your new GitHub repository and paste it into “repository URL”
+
+3) Check if you have a local repository stored on your computer
+
+---
+
+# Committing, Pushing, and Pulling
+
+### Commit and Push from Local Repository
+
+1) Make a change to the README file in your local repository
+
+2) Stage and commit this change using the Git pane in RStudio
+
+3) Push your commit to your remote repository on GitHub
+   - If you are a new GitHub user, you will be asked to provide your username and password
+   
+4) Check if your local change is now on your GitHub remote
+
+5) Repeat the steps above to check if your GitHub credentials were cached properly (You should **NOT** be asked for your username and password a second time)
+
+---
+
+# Committing, Pushing, and Pulling
+
+### Commit in GitHub and Pull into Local Repository
+
+1) Make a change to the README file in your remote repository on GitHub
+
+2) Commit this change in GitHub
+
+3) Pull change into your local repository using the Git pane in RStudio
+
+4) Confirm that the change is now in your local repository
+
+---
+
+# Collaborating with Others
+
+### Cloning vs. Forking Repositories
+
+--
+
+#### Clone:
+
+- A copy of a remote repository stored as a local repository on your computer
+- Able to push, fetch, and pull changes directly with the remote repository
+- Usually the configuration with your own repositories or with other repositories that you are a collaborator on
+
+--
+
+&lt;br&gt;
+
+#### Fork:
+
+- A special configuration which is usually a copy of someone else's repository
+- Able to fetch and pull changes and make edits on your forked copy
+- **NOT** able to directly push edits to the original repository, only to the forked repository
+- Usually the configuration when you create pull requests or when you are not a collaborator on a public repository
+
+---
+
+# Collaborating with Others
+
+### Adding Collaborators
+
+Allows for others to clone your repository and directly push, fetch, and pull changes
+
+1) Open up "Settings" in your remote repository on GitHub
+
+2) Select "Manage access" and then "Invite a collaborator"
+
+3) Enter the username of your collaborator
+
+4) A confirmation email will be sent to your collaborator. Wait for them to confirm.
+
+---
+
+# Collaborating with Others
+
+### Avoiding Merge Conflicts
+
+A merge conflict occurs when 2 people change the same lines in the same file without first pulling in the changes that the other has made. This is always a possibility when 2 or more people are actively working on a repository.
+&lt;br&gt;
+&lt;br&gt;
+
+How to avoid:
+
+- Communicate often with your collaborators
+- Pull each time you open up the project in RStudio
+- Use the workflow: *Pull &gt; Edit &gt; Pull &gt; Commit &gt; Push*
+- Pull before every commit, and commit often
+
+---
+
+# General Workflows
+
+### Creating Repositories
+
+1) Create a new repository on GitHub
+
+2) Clone the new repository to your local computer using one of the following methods:
+  - RStudio: *File &gt; New Project &gt; Version Control &gt; Git*
+  - Git Bash or command line: `git clone &lt;repo URL&gt;`
+  - Using the [`usethis` package](https://usethis.r-lib.org/) in R:
+
+
+```r
+usethis::create_from_github("repo URL")
+```
+&lt;br&gt;
+
+**TIP:** Use a consistent directory on your computer for your local Git repositories 
+
+---
+
+# General Workflows
+
+### Committing Changes
+
+1) Make some changes to the repository
+
+2) Stage the changes using one of the following methods:
+  - RStudio: check the box next to the file(s) you would like to commit in the Git pane
+  - Git Bash or command line: `git add &lt;directory or file&gt;`
+  
+3) Commit staged changes using one of the following methods:
+  - RStudio: use the commit window accessed from the Git pane
+  - Git Bash or command line: `git commit -m "&lt;message&gt;"`
+&lt;br&gt;
+&lt;br&gt;
+
+**TIP:** Make each commit for one specific change to the repository
+
+---
+
+# General Workflows
+
+### Pushing and Pulling
+
+#### Push:
+
+- RStudio: use the button in the Git pane
+- Git Bash or command line: `git push &lt;remote&gt; &lt;branch&gt;`
+
+Push one or more commits to the remote repository once you have a finished product or fix
+
+--
+
+&lt;br&gt;
+
+#### Pull: 
+
+- RStudio: use the button in the Git pane
+- Git Bash or command line: `git pull &lt;remote&gt;`
+
+For shared repositories, it is good practice to pull in the most recent changes in the remote repository at the beginning of your session and before you commit.
+
+---
+
+# Open Questions???
+
+---
+
+# Sources and Useful References
+
+- Some of the information in this presentation is from the [Happy Git and GitHub for the useR](https://happygitwithr.com/) web document, which is a helpful resource.
+- [GitHub help pages](https://docs.github.com/en)
+- [GitHub Cheat Sheet](https://education.github.com/git-cheat-sheet-education.pdf)
+- [Atlassian Cheat Sheet](https://www.atlassian.com/git/tutorials/atlassian-git-cheatsheet)
+- The [`usethis package`](https://usethis.r-lib.org/) has some useful R functions for working with GitHub and pull requests 
+- Google search or Stack Overflow
+
+---
+
+# Intermediate-level topics
+
+- Resolving merge conflicts
+- Commit history and diff
+- gitignore file
+- Undoing changes
+- Branches
+- Pull requests
+- Merging branches
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

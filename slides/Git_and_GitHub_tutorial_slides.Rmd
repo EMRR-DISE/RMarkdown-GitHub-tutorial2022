@@ -1,0 +1,376 @@
+---
+title: "Getting Started with Git and GitHub"
+subtitle: "Beginner level tutorial for Git and GitHub"
+author: "Dave Bosworth<br>EMRR Branch<br>Collaborative Science and Innovation Section<br><br>"
+date: "June 7, 2023"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: [default, metropolis, metropolis-fonts, "css/custom.css"]
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+---
+
+```{r setup, include = FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(warning = FALSE, message = FALSE)
+```
+
+# Goal of Tutorial
+
+<br>
+
+- Provide a basic overview of Git and GitHub
+
+- Information on how to use these tools with work projects
+
+- Focus is from a beginner perspective
+
+- Interactive - please feel free to ask questions or provide feedback during the workshop
+
+---
+
+# Tutorial Outline
+
+--
+
+What is Git and GitHub and why should I use them?
+
+Common Terminology
+
+--
+
+Configuring Git
+
+**Activity 1:**
+
+--
+
+Creating and Cloning Repositories
+
+**Activity 2:**
+
+--
+
+Committing, Pushing, and Pulling
+
+**Activity 3:**
+
+--
+
+Collaborating with Others: Forking vs. Cloning, Adding Collaborators
+
+**Activity 4:**
+
+---
+
+# Tutorial Outline - continued
+
+Collaborating with Others: Avoiding Merge Conflicts
+
+**Activity 5:**
+
+--
+
+General Workflows
+
+--
+
+Open Questions
+
+--
+
+Intermediate-level topics (if time)
+
+---
+
+# Git vs. GitHub
+
+<br>
+
+**Git** is a version control system originally used by software developers to work together on large projects
+
+**GitHub** is a web or cloud-hosting service for Git-based projects
+
+---
+
+# Why should I use it?
+
+<br>
+
+-	Version control and backup
+
+-	**Collaboration**
+
+-	Sharing and developing R packages
+
+---
+class: inverse, middle
+
+# GitHub Tour
+
+---
+
+# Common Terms
+
+--
+
+- Repository: a set of files managed by Git
+
+--
+
+- Commit: a "snapshot" of all of the files in the repository at a particular time
+
+--
+
+- Local repository: A project saved on your computer
+
+--
+
+- Remote repository: Version of the project that is hosted somewhere other than your computer. Most common is GitHub.
+
+--
+
+- Push: Sends changes made on a local repository to the remote repository
+
+--
+
+- Fetch: Retrieves changes from a remote repository, but does **NOT** change the state of the local repository in any way
+
+--
+
+- Pull: Fetches changes from a remote repository and merges them into the local repository
+
+--
+
+- Branch: Parallel tracks that allow multiple users to work on the same project without overwriting work
+
+--
+
+- Organization: shared accounts where businesses and open-source projects can collaborate across many projects at once
+
+---
+
+# Local vs. Remote repositories
+
+```{r print local vs remote image, echo = FALSE, fig.align = 'center', out.width = '55%'}
+knitr::include_graphics("images/Local_vs_Remote_figure.png")
+```
+
+---
+
+# Configuring Git
+
+<br>
+
+Using Git Bash or command line:<br>
+
+`git config --global user.name 'Your Name'`<br>
+`git config --global user.email 'yourname@domain.com'`<br>
+Check configuration with `git config --global --list`
+
+<br>
+
+Using the [`usethis` package](https://usethis.r-lib.org/) in R:
+
+```{r echo = TRUE, eval = FALSE}
+usethis::use_git_config(user.name = "Your Name", user.email = "yourname@domain.com")
+```
+
+---
+
+# Creating and Cloning Repositories
+
+**Purpose:** Check configuration on our computers, and introduce basic concepts of Git and GitHub
+
+1) Create a new repository on GitHub
+
+2) Clone the new repository to your local computer using RStudio
+  - *File > New Project > Version Control > Git*
+  - Copy the URL of your new GitHub repository and paste it into “repository URL”
+
+3) Check if you have a local repository stored on your computer
+
+---
+
+# Committing, Pushing, and Pulling
+
+### Commit and Push from Local Repository
+
+1) Make a change to the README file in your local repository
+
+2) Stage and commit this change using the Git pane in RStudio
+
+3) Push your commit to your remote repository on GitHub
+   - If you are a new GitHub user, you will be asked to provide your username and password
+   
+4) Check if your local change is now on your GitHub remote
+
+5) Repeat the steps above to check if your GitHub credentials were cached properly (You should **NOT** be asked for your username and password a second time)
+
+---
+
+# Committing, Pushing, and Pulling
+
+### Commit in GitHub and Pull into Local Repository
+
+1) Make a change to the README file in your remote repository on GitHub
+
+2) Commit this change in GitHub
+
+3) Pull change into your local repository using the Git pane in RStudio
+
+4) Confirm that the change is now in your local repository
+
+---
+
+# Collaborating with Others
+
+### Cloning vs. Forking Repositories
+
+--
+
+#### Clone:
+
+- A copy of a remote repository stored as a local repository on your computer
+- Able to push, fetch, and pull changes directly with the remote repository
+- Usually the configuration with your own repositories or with other repositories that you are a collaborator on
+
+--
+
+<br>
+
+#### Fork:
+
+- A special configuration which is usually a copy of someone else's repository
+- Able to fetch and pull changes and make edits on your forked copy
+- **NOT** able to directly push edits to the original repository, only to the forked repository
+- Usually the configuration when you create pull requests or when you are not a collaborator on a public repository
+
+---
+
+# Collaborating with Others
+
+### Adding Collaborators
+
+Allows for others to clone your repository and directly push, fetch, and pull changes
+
+1) Open up "Settings" in your remote repository on GitHub
+
+2) Select "Manage access" and then "Invite a collaborator"
+
+3) Enter the username of your collaborator
+
+4) A confirmation email will be sent to your collaborator. Wait for them to confirm.
+
+---
+
+# Collaborating with Others
+
+### Avoiding Merge Conflicts
+
+A merge conflict occurs when 2 people change the same lines in the same file without first pulling in the changes that the other has made. This is always a possibility when 2 or more people are actively working on a repository.
+<br>
+<br>
+
+How to avoid:
+
+- Communicate often with your collaborators
+- Pull each time you open up the project in RStudio
+- Use the workflow: *Pull > Edit > Pull > Commit > Push*
+- Pull before every commit, and commit often
+
+---
+
+# General Workflows
+
+### Creating Repositories
+
+1) Create a new repository on GitHub
+
+2) Clone the new repository to your local computer using one of the following methods:
+  - RStudio: *File > New Project > Version Control > Git*
+  - Git Bash or command line: `git clone <repo URL>`
+  - Using the [`usethis` package](https://usethis.r-lib.org/) in R:
+
+```{r echo = TRUE, eval = FALSE}
+usethis::create_from_github("repo URL")
+```
+<br>
+
+**TIP:** Use a consistent directory on your computer for your local Git repositories 
+
+---
+
+# General Workflows
+
+### Committing Changes
+
+1) Make some changes to the repository
+
+2) Stage the changes using one of the following methods:
+  - RStudio: check the box next to the file(s) you would like to commit in the Git pane
+  - Git Bash or command line: `git add <directory or file>`
+  
+3) Commit staged changes using one of the following methods:
+  - RStudio: use the commit window accessed from the Git pane
+  - Git Bash or command line: `git commit -m "<message>"`
+<br>
+<br>
+
+**TIP:** Make each commit for one specific change to the repository
+
+---
+
+# General Workflows
+
+### Pushing and Pulling
+
+#### Push:
+
+- RStudio: use the button in the Git pane
+- Git Bash or command line: `git push <remote> <branch>`
+
+Push one or more commits to the remote repository once you have a finished product or fix
+
+--
+
+<br>
+
+#### Pull: 
+
+- RStudio: use the button in the Git pane
+- Git Bash or command line: `git pull <remote>`
+
+For shared repositories, it is good practice to pull in the most recent changes in the remote repository at the beginning of your session and before you commit.
+
+---
+
+# Open Questions???
+
+---
+
+# Sources and Useful References
+
+- Some of the information in this presentation is from the [Happy Git and GitHub for the useR](https://happygitwithr.com/) web document, which is a helpful resource.
+- [GitHub help pages](https://docs.github.com/en)
+- [GitHub Cheat Sheet](https://education.github.com/git-cheat-sheet-education.pdf)
+- [Atlassian Cheat Sheet](https://www.atlassian.com/git/tutorials/atlassian-git-cheatsheet)
+- The [`usethis package`](https://usethis.r-lib.org/) has some useful R functions for working with GitHub and pull requests 
+- Google search or Stack Overflow
+
+---
+
+# Intermediate-level topics
+
+- Resolving merge conflicts
+- Commit history and diff
+- gitignore file
+- Undoing changes
+- Branches
+- Pull requests
+- Merging branches
+

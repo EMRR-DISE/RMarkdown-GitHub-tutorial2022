@@ -17,3 +17,6 @@ layout: default
 * [R Markdown: The Definitive Guide (Online Book)](https://bookdown.org/yihui/rmarkdown/)
 * [R Markdown Cookbook (Online Book)](https://bookdown.org/yihui/rmarkdown-cookbook/)
 
+# Git and GitHub
+
+* [Tutorial slides](slides/Git_and_GitHub_tutorial_slides.html)
