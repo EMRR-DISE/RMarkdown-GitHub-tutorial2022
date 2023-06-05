@@ -37,47 +37,38 @@ knitr::opts_chunk$set(warning = FALSE, message = FALSE)
 
 --
 
-What is Git and GitHub and why should I use them?
-
+What is Git and GitHub and why should I use them?<br>
+Short Tour of GitHub<br>
 Common Terminology
 
 --
 
-Configuring Git
-
-**Activity 1:**
-
---
-
-Creating and Cloning Repositories
-
-**Activity 2:**
+Configuring Git<br>
+**Activity 1: Setup Git Terminal and Configuration**
 
 --
 
-Committing, Pushing, and Pulling
-
-**Activity 3:**
+Creating and Cloning Repositories<br>
+**Activity 2: Create and Clone a Repository**
 
 --
 
-Collaborating with Others: Forking vs. Cloning, Adding Collaborators
+Committing, Pushing, and Pulling<br>
+**Activity 3: Commit and Push from Local Repository**<br>
+**Activity 4: Commit in GitHub and Pull into Local Repository**
 
-**Activity 4:**
+--
+
+Collaborating with Others: Forking vs. Cloning, Adding Collaborators<br>
+
+--
+
+Collaborating with Others: Avoiding Merge Conflicts<br>
+**Activity 5:**
 
 ---
 
 # Tutorial Outline - continued
-
-Collaborating with Others: Avoiding Merge Conflicts
-
-**Activity 5:**
-
---
-
-General Workflows
-
---
 
 Open Questions
 
@@ -111,6 +102,10 @@ Intermediate-level topics (if time)
 class: inverse, middle
 
 # GitHub Tour
+
+- Home Page
+- Commit History
+- Repository and Account Settings
 
 ---
 
@@ -181,49 +176,119 @@ usethis::use_git_config(user.name = "Your Name", user.email = "yourname@domain.c
 ```
 
 ---
+class: inverse, middle
+
+# Activity 1
+
+### Setup Git Terminal and Configuration
+
+- Set up RStudio Terminal to work with Git
+- Use Git command line to:
+  - Check configuration
+  - Set up user name and email
+  - Re-check configuration
+- Demonstrate Git Bash
+
+---
 
 # Creating and Cloning Repositories
 
-**Purpose:** Check configuration on our computers, and introduce basic concepts of Git and GitHub
-
 1) Create a new repository on GitHub
 
-2) Clone the new repository to your local computer using RStudio
-  - *File > New Project > Version Control > Git*
-  - Copy the URL of your new GitHub repository and paste it into “repository URL”
+2) Clone the new repository to your local computer using one of the following methods:
+  - RStudio: *File > New Project > Version Control > Git*
+  - Git Bash or command line: `git clone <repo URL>`
+  - Using the [`usethis` package](https://usethis.r-lib.org/) in R:
+
+```{r echo = TRUE, eval = FALSE}
+usethis::create_from_github("repo URL")
+```
 
 3) Check if you have a local repository stored on your computer
 
+<br>
+
+**TIP:** Use a consistent directory on your computer for your local Git repositories 
+
+---
+class: inverse, middle
+
+# Activity 2
+
+### Create and Clone a Repository
+
+- Create a new repository on GitHub
+- Clone the new repository to your local computer using RStudio
+- Check if you have a local repository stored on your computer
+
 ---
 
 # Committing, Pushing, and Pulling
+
+### Committing Changes
+
+1) Make some changes to the repository
+
+2) Stage the changes using one of the following methods:
+  - RStudio: check the box next to the file(s) you would like to commit in the Git pane
+  - Git Bash or command line: `git add <directory or file>`
+  
+3) Commit staged changes using one of the following methods:
+  - RStudio: use the commit window accessed from the Git pane
+  - Git Bash or command line: `git commit -m "<message>"`
+
+<br>
+
+**TIP:** Make each commit for one specific change to the repository
+
+---
+
+# Committing, Pushing, and Pulling
+
+### Pushing Commits
+
+- RStudio: use the button in the Git pane
+
+- Git Bash or command line: `git push <remote> <branch>`
+
+<br>
+
+**TIP:** Push one or more commits to the remote repository once you have a finished product or fix
+
+---
+class: inverse, middle
+
+# Activity 3
 
 ### Commit and Push from Local Repository
 
-1) Make a change to the README file in your local repository
-
-2) Stage and commit this change using the Git pane in RStudio
-
-3) Push your commit to your remote repository on GitHub
-   - If you are a new GitHub user, you will be asked to provide your username and password
-   
-4) Check if your local change is now on your GitHub remote
-
-5) Repeat the steps above to check if your GitHub credentials were cached properly (You should **NOT** be asked for your username and password a second time)
+- Make a change to the README file in the local repository
+- Stage and commit this change using the Git pane in RStudio
+- Push the commit to the remote repository on GitHub
+- Check if th local change is now on the GitHub remote
+- Repeat the steps above to check if your GitHub credentials were cached properly (You should **NOT** be asked for your username and password a second time)
 
 ---
 
 # Committing, Pushing, and Pulling
 
+### Pulling Commits
+
+- RStudio: use the button in the Git pane
+
+- Git Bash or command line: `git pull <remote>`
+
+---
+class: inverse, middle
+
+# Activity 4
+
 ### Commit in GitHub and Pull into Local Repository
 
-1) Make a change to the README file in your remote repository on GitHub
-
-2) Commit this change in GitHub
-
-3) Pull change into your local repository using the Git pane in RStudio
-
-4) Confirm that the change is now in your local repository
+- Make a change to the README file in the remote repository on GitHub
+- Commit this change in GitHub
+- Pull change into the local repository using the Git pane in RStudio
+- Confirm that the change is now in the local repository
 
 ---
 
@@ -282,70 +347,6 @@ How to avoid:
 - Pull each time you open up the project in RStudio
 - Use the workflow: *Pull > Edit > Pull > Commit > Push*
 - Pull before every commit, and commit often
-
----
-
-# General Workflows
-
-### Creating Repositories
-
-1) Create a new repository on GitHub
-
-2) Clone the new repository to your local computer using one of the following methods:
-  - RStudio: *File > New Project > Version Control > Git*
-  - Git Bash or command line: `git clone <repo URL>`
-  - Using the [`usethis` package](https://usethis.r-lib.org/) in R:
-
-```{r echo = TRUE, eval = FALSE}
-usethis::create_from_github("repo URL")
-```
-<br>
-
-**TIP:** Use a consistent directory on your computer for your local Git repositories 
-
----
-
-# General Workflows
-
-### Committing Changes
-
-1) Make some changes to the repository
-
-2) Stage the changes using one of the following methods:
-  - RStudio: check the box next to the file(s) you would like to commit in the Git pane
-  - Git Bash or command line: `git add <directory or file>`
-  
-3) Commit staged changes using one of the following methods:
-  - RStudio: use the commit window accessed from the Git pane
-  - Git Bash or command line: `git commit -m "<message>"`
-<br>
-<br>
-
-**TIP:** Make each commit for one specific change to the repository
-
----
-
-# General Workflows
-
-### Pushing and Pulling
-
-#### Push:
-
-- RStudio: use the button in the Git pane
-- Git Bash or command line: `git push <remote> <branch>`
-
-Push one or more commits to the remote repository once you have a finished product or fix
-
---
-
-<br>
-
-#### Pull: 
-
-- RStudio: use the button in the Git pane
-- Git Bash or command line: `git pull <remote>`
-
-For shared repositories, it is good practice to pull in the most recent changes in the remote repository at the beginning of your session and before you commit.
 
 ---
 
