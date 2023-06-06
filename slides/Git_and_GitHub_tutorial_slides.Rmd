@@ -387,17 +387,6 @@ class: inverse, middle
 
 ---
 
-# Sources and Useful References
-
-- Some of the information in this presentation is from the [Happy Git and GitHub for the useR](https://happygitwithr.com/) web document, which is a helpful resource.
-- [GitHub help pages](https://docs.github.com/en)
-- [GitHub Cheat Sheet](https://education.github.com/git-cheat-sheet-education.pdf)
-- [Atlassian Cheat Sheet](https://www.atlassian.com/git/tutorials/atlassian-git-cheatsheet)
-- The [`usethis package`](https://usethis.r-lib.org/) has some useful R functions for working with GitHub and pull requests 
-- Google search or Stack Overflow
-
----
-
 # Intermediate-level topics 
 
 (optional, if time allows)
