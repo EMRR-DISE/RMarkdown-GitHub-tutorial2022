@@ -60,21 +60,23 @@ Committing, Pushing, and Pulling<br>
 --
 
 Collaborating with Others: Forking vs. Cloning, Adding Collaborators<br>
-
---
-
-Collaborating with Others: Avoiding Merge Conflicts<br>
-**Activity 5:**
+**Activity 5: Add a Collaborator**<br>
+**Activity 6: Collaborate on Repository**
 
 ---
 
 # Tutorial Outline - continued
 
+Collaborating with Others: Avoiding Merge Conflicts<br>
+**Activity 7: Resolving Merge Conflicts (optional, if time allows)**
+
+--
+
 Open Questions
 
 --
 
-Intermediate-level topics (if time)
+Intermediate-level topics (optional, if time allows)
 
 ---
 
@@ -265,7 +267,7 @@ class: inverse, middle
 - Make a change to the README file in the local repository
 - Stage and commit this change using the Git pane in RStudio
 - Push the commit to the remote repository on GitHub
-- Check if th local change is now on the GitHub remote
+- Check if the local change is now on the GitHub remote
 - Repeat the steps above to check if your GitHub credentials were cached properly (You should **NOT** be asked for your username and password a second time)
 
 ---
@@ -332,13 +334,32 @@ Allows for others to clone your repository and directly push, fetch, and pull ch
 4) A confirmation email will be sent to your collaborator. Wait for them to confirm.
 
 ---
+class: inverse, middle
+
+# Activity 5
+
+### Add a Collaborator
+
+- Invite a collaborator to GitHub repository
+- Collaborator confirms invite
+
+---
+class: inverse, middle
+
+# Activity 6
+
+### Collaborate on Repository
+
+- Take turns committing, pushing, and pulling changes on each repository
+
+---
 
 # Collaborating with Others
 
 ### Avoiding Merge Conflicts
 
 A merge conflict occurs when 2 people change the same lines in the same file without first pulling in the changes that the other has made. This is always a possibility when 2 or more people are actively working on a repository.
-<br>
+
 <br>
 
 How to avoid:
@@ -347,6 +368,18 @@ How to avoid:
 - Pull each time you open up the project in RStudio
 - Use the workflow: *Pull > Edit > Pull > Commit > Push*
 - Pull before every commit, and commit often
+
+---
+class: inverse, middle
+
+# Activity 7
+
+### Resolving Merge Conflicts 
+
+(optional, if time allows)
+
+- Create a merge conflict
+- Resolve conflict
 
 ---
 
@@ -365,7 +398,9 @@ How to avoid:
 
 ---
 
-# Intermediate-level topics
+# Intermediate-level topics 
+
+(optional, if time allows)
 
 - Resolving merge conflicts
 - Commit history and diff
