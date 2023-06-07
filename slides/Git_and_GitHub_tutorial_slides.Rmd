@@ -253,9 +253,11 @@ class: inverse, middle
 
 - Git Bash or command line: `git push <remote> <branch>`
 
-<br>
-
 **TIP:** Push one or more commits to the remote repository once you have a finished product or fix
+
+```{r print git push image, echo = FALSE, fig.align = 'center', out.width = '50%'}
+knitr::include_graphics("images/GitPush_figure.png")
+```
 
 ---
 class: inverse, middle
@@ -279,6 +281,10 @@ class: inverse, middle
 - RStudio: use the button in the Git pane
 
 - Git Bash or command line: `git pull <remote>`
+
+```{r print git pull image, echo = FALSE, fig.align = 'center', out.width = '50%'}
+knitr::include_graphics("images/GitPull_figure.png")
+```
 
 ---
 class: inverse, middle
@@ -340,7 +346,7 @@ class: inverse, middle
 
 ### Add a Collaborator
 
-- Invite a collaborator to GitHub repository
+- Invite your activity partner as a collaborator to your GitHub repository
 - Collaborator confirms invite
 
 ---
@@ -391,11 +397,10 @@ class: inverse, middle
 
 (optional, if time allows)
 
-- Resolving merge conflicts
-- Commit history and diff
 - gitignore file
+- Commit history and diff
 - Undoing changes
 - Branches
-- Pull requests
 - Merging branches
+- Pull requests
 
